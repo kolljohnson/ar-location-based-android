@@ -1,18 +1,13 @@
 package ng.dat.ar;
 
-import android.content.Context;
-import android.graphics.Camera;
-import android.test.AndroidTestCase;
 import android.view.SurfaceView;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-
 import org.junit.runner.RunWith;
+
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 
@@ -25,12 +20,10 @@ import org.robolectric.annotation.Config;
 public class ARCameraTest  {
     @Test
     public void setCameraSetsCameraToNull() {
-        // need context
-        Context context = RuntimeEnvironment.application;
-        LegacyTestActivity testActivity = Robolectric.setupActivity(LegacyTestActivity.class);
-        SurfaceView surfaceView = new SurfaceView(testActivity);
+        LegacyTestActivity activityContext = Robolectric.setupActivity(LegacyTestActivity.class);
+        SurfaceView surfaceView = new SurfaceView(activityContext);
 
-        ARCamera arCamera = new ARCamera(testActivity, surfaceView);
+        ARCamera arCamera = new ARCamera(activityContext, surfaceView);
         arCamera.setCamera(null);
         assertNull(arCamera.camera);
     }
